@@ -1,0 +1,144 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "logvalue"
+abstract: >-
+  A feature-analysis harness that measures the diagnostic value of individual
+  log templates against real failure ground truth, and tests whether static
+  log-quality analysis predicts runtime log utility.
+type: software
+version: 0.1.0
+date-released: "2026-10-17"
+license: MIT
+repository-code: "https://github.com/dgexplores/logvalue"
+authors:
+  - family-names: "DG"
+    alias: "dgexplores"
+keywords:
+  - log analysis
+  - observability
+  - feature analysis
+  - discriminative power
+  - log template mining
+  - software engineering
+
+preferred-citation:
+  type: software
+  title: "logvalue: Measuring the diagnostic value of log statements"
+  authors:
+    - family-names: "DG"
+      alias: "dgexplores"
+  year: 2026
+  version: 0.1.0
+  license: MIT
+
+references:
+  # ---------------------------------------------------------------------------
+  # Dataset citations. LogHub's terms of use require referencing the repository
+  # URL and citing the paper for ANY usage or distribution.
+  # ---------------------------------------------------------------------------
+
+  - type: dataset
+    title: "Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics"
+    authors:
+      - family-names: "Zhu"
+        given-names: "Jieming"
+      - family-names: "He"
+        given-names: "Shilin"
+      - family-names: "He"
+        given-names: "Pinjia"
+      - family-names: "Liu"
+        given-names: "Jinyang"
+      - family-names: "Lyu"
+        given-names: "Michael R."
+    year: 2023
+    collection-title: "IEEE International Symposium on Software Reliability Engineering (ISSRE)"
+    url: "https://github.com/logpai/loghub"
+
+  - type: dataset
+    title: "Loghub-2.0: An Evaluation of Log Parsing Techniques"
+    authors:
+      - family-names: "Jiang"
+        given-names: "Zhihan"
+      - family-names: "Liu"
+        given-names: "Jinyang"
+      - family-names: "Huang"
+        given-names: "Junjie"
+      - family-names: "Li"
+        given-names: "Yichen"
+      - family-names: "Huo"
+        given-names: "Yintong"
+      - family-names: "Gu"
+        given-names: "Jiazhen"
+      - family-names: "Chen"
+        given-names: "Zhuangbin"
+      - family-names: "Zhu"
+        given-names: "Jieming"
+      - family-names: "Lyu"
+        given-names: "Michael R."
+    year: 2024
+    collection-title: "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)"
+    url: "https://github.com/logpai/loghub"
+
+  - type: dataset
+    title: "Fault-Injection-Dataset: How Bad Can a Bug Get? An Empirical Analysis of Software Failures in the OpenStack Cloud Computing Platform"
+    authors:
+      - family-names: "Li"
+        given-names: "Feifei"
+      - family-names: "Du"
+        given-names: "Min"
+      - family-names: "Zheng"
+        given-names: "Guineng"
+      - family-names: "Srikumar"
+        given-names: "Vivek"
+    year: 2020
+    url: "https://github.com/dessertlab/Fault-Injection-Dataset"
+
+  - type: dataset
+    title: "Failure-Dataset-OpenStack: OpenStack fault-injection campaigns (DEPL, NET, STO)"
+    year: 2021
+    url: "https://github.com/dessertlab/Failure-Dataset-OpenStack"
+
+  # ---------------------------------------------------------------------------
+  # Method references
+  # ---------------------------------------------------------------------------
+
+  - type: article
+    title: "Drain: An Online Log Parsing Approach with Fixed Depth Tree"
+    authors:
+      - family-names: "He"
+        given-names: "Pinjia"
+      - family-names: "He"
+        given-names: "Shilin"
+      - family-names: "Luo"
+        given-names: "Chenyu"
+      - family-names: "Qu"
+        given-names: "Bing"
+      - family-names: "Ye"
+        given-names: "Tong"
+      - family-names: "Zhu"
+        given-names: "Jieming"
+      - family-names: "Lyu"
+        given-names: "Michael R."
+    year: 2020
+    collection-title: "IEEE/ACM International Conference on Software Engineering (ICSE)"
+    url: "https://github.com/logpai/logparser"
+
+  - type: article
+    title: "Characterizing and Detecting Anti-patterns in the Logging Code"
+    authors:
+      - family-names: "Chen"
+        given-names: "Tao"
+      - family-names: "Jiang"
+        given-names: "Zhihan"
+      - family-names: "Xia"
+        given-names: "Yulei"
+      - family-names: "Nagappan"
+        given-names: "Prem"
+      - family-names: "Luo"
+        given-names: "Xifeng"
+    year: 2017
+    collection-title: "IEEE International Conference on Software Engineering (ICSE)"
+    url: "https://www.eecs.yorku.ca/~zmjiang/publications/icse2017_chen.pdf"
+    notes: >-
+      Introduces LCAnalyzer: 95% recall at 60% precision — the reference point
+      against which this project measures static-analysis quality.

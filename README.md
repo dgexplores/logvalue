@@ -2,13 +2,71 @@
 
 **Do your log statements actually carry information?**
 
+> A runnable research MVP — bring labelled incident windows, extract stable log
+> templates, and rank which templates are associated with failures.
+
 A feature-analysis harness that measures the diagnostic value of individual log
 templates against real failure ground truth — and tests whether the entire
 static log-analysis field is measuring anything real.
 
-> **Status: design phase.** No implementation yet. See [`docs/PLAN.md`](docs/PLAN.md).
-> No results are published here because none exist yet. That is deliberate — this
-> repository will only ever report numbers it has actually measured.
+> **Status: runnable portfolio project.** The repository ships a reproducible
+> per-template analysis CLI, parser, template miner, temporal redundancy
+> experiment, conservative Python scanner, report generator, demo data, tests,
+> and CI. Large public-dataset evaluation is the next gated milestone.
+> No research results are published here because none have yet been measured.
+
+## Run it in two minutes
+
+Requires Python 3.10+.
+
+```bash
+git clone https://github.com/dgexplores/logvalue.git
+cd logvalue
+python3 -m pip install -e '.[dev]'
+make demo
+cat results/report.md
+```
+
+`make demo` produces template metrics, a temporal redundancy result, mined raw
+log templates, static findings, and a shareable Markdown report in `results/`.
+
+The input is JSONL or CSV with `message` and binary `label` (`0` normal, `1`
+faulty). Each row should represent an incident/trace window; line-level logs
+must be aggregated before analysis so a template's presence is meaningful.
+
+The output ranks parameter-masked templates with transparent association
+metrics: AUC, mutual information (nats), and χ². These metrics show association
+with the observed label distribution; they are not deletion recommendations or
+causal claims.
+
+```bash
+make test
+python3 scripts/download_data.py --list
+```
+
+## What is complete today
+
+| Capability | Command | Output |
+|---|---|---|
+| Template mining | `logvalue parse application.log --output templates.json` | parameter-masked log templates |
+| E1 association metrics | `logvalue analyze incidents.jsonl --output metrics.csv` | AUC, MI, χ² per template |
+| E2 redundancy check | `logvalue redundancy incidents.jsonl --output redundancy.json` | temporal PR-AUC comparison |
+| Static source signals | `logvalue scan-python service.py --output findings.json` | auditable AST findings |
+| Technical report | `logvalue report incidents.jsonl --output report.md` | provenance-first Markdown report |
+
+`examples/` contains a small synthetic data set for the demo. It illustrates
+the workflow only; it is not evidence about production logging or the datasets
+named below. See [`docs/RESULTS.md`](docs/RESULTS.md) for the explicit result
+status and [`docs/BLOG.md`](docs/BLOG.md) for the portfolio narrative.
+
+## Organisational use
+
+LogValue is production-ready as a **containerised batch-analysis component**:
+it has an explicit data contract, atomic output writes, input hashes and
+versioned run metadata, non-root container execution, and CI quality gates.
+See [`docs/OPERATIONS.md`](docs/OPERATIONS.md) for the supported deployment
+shape and data-handling requirements. It is not a hosted multi-tenant service
+or an automatic log-deletion system.
 
 ---
 

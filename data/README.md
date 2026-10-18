@@ -2,16 +2,16 @@
 
 **Empty by design.** Datasets are downloaded on demand and never committed.
 
-Fetched via:
+Provenance references can be listed with:
 
 ```bash
-python3 scripts/download_data.py --list     # show available datasets
-python3 scripts/download_data.py --minimal  # OpenStack + HDFS_v1  (~250 MB)
-python3 scripts/download_data.py --all      # full labelled set      (~1.5 GB)
+python3 scripts/download_data.py --list
 ```
 
-Every download is verified against a SHA256 manifest. A mismatch is a hard
-failure.
+For reproducibility, download only an artifact that publishes a SHA-256, then
+pass that URL and checksum to `scripts/download_data.py`. A mismatch is a hard
+failure. The repository intentionally does not invent checksums for sources
+that do not publish one.
 
 ## Licensing
 

@@ -10,7 +10,17 @@ Phased, gated, sequenced by risk rather than by feature. Each phase has a
 **Duration:** ~1 week
 **Goal:** prove the datasets parse and templates extract before anything is built on them.
 
-### Deliverables
+### Delivered foundation
+
+- `src/logvalue/parsing/formats.py` — plain-text reader with level extraction
+- `src/logvalue/parsing/drain.py` — deterministic masked-token clustering baseline
+- `scripts/download_data.py` — provenance catalogue and SHA-256-verified archive downloader
+
+The current miner is a transparent baseline, not a claimed Drain++ benchmark
+implementation. The >95% gate remains open until it is run against a
+ground-truth template corpus.
+
+### Remaining deliverables
 
 - `scripts/download_data.py` — fetches datasets, verifies SHA256 against a
   committed manifest, extracts to `data/` (gitignored)
